@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function Pagina01() {
     return (
-        <>
+        <div>
             <section className="w-full min-h-[80vh] py-5 md:py-5 lg:py-5 xl:py-5">
                 <div className="container px-4 md:px-6">
                     <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
@@ -23,8 +23,7 @@ export default function Pagina01() {
                     </div>
                 </div>
             </section>
-        </>
-
+        </div>
     )
 
 }
