@@ -7,10 +7,10 @@ import Image from 'next/image';
 
 export function Pagina03() {
     return (
-        <section className="flex min-h-screen items-center justify-center w-full py-20 bg-gray-50">
-            <div className="flex items-stretch justify-center w-2/3 space-x-0 shadow-xl">
+        <section className="flex min-h-screen items-center justify-center w-full py-20 bg-blue-50">
+            <div className="flex items-stretch justify-center w-2/3 shadow-2xl">
                 {/* Contenedor de la Imagen */}
-                <div className="w-1/3 flex justify-center">
+                <div className="hidden md:flex w-1/3 justify-center"> {/* Ocultar en pantallas pequeñas */}
                     <Image
                         src="/img/imagen-02.jpg"
                         width={300} // Ajusta el ancho según tus necesidades
@@ -21,7 +21,7 @@ export function Pagina03() {
                 </div>
                 
                 {/* Contenedor del Formulario */}
-                <div className="w-2/3 bg-white p-8 rounded-lg ">
+                <div className="w-full md:w-2/3 bg-white p-8 rounded-lg">
                     <form className="space-y-6">
                         <h2 className="text-3xl font-bold text-blue-800 mb-6 text-center">Regístrate como usuario</h2>
                         <div className="space-y-2">
