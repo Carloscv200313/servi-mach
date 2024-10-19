@@ -1,7 +1,10 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
-export default function Pagina01() {
+interface Pagina{
+    scroll : ()=>void;
+}
+export default function Pagina01({scroll} : Pagina) {
     return (
         <div className="max-h-[100vh] flex items-center justify-center bg-gradient-to-b from-[#8c52ff] to-[#1bdaff] p-8 xl:px-32">
             <div className="bg-transparent border-8 border-white rounded-3xl shadow-lg p-8 w-full h-full flex flex-col md:flex-row ">
@@ -16,7 +19,9 @@ export default function Pagina01() {
                         </p>
 
                     </div>
-                    <Button className="bg-white text-[#8c52ff] hover:bg-white/90  font-bold py-4 px-6 rounded-3xl text-xl">
+                    <Button 
+                    className="bg-white text-[#8c52ff] hover:bg-white/90  font-bold py-4 px-6 rounded-3xl text-xl"
+                    onClick={scroll}>
                         Regístrate
                     </Button>
                 </div>

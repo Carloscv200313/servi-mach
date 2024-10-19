@@ -1,13 +1,16 @@
 'use client'
-
+import { forwardRef } from 'react';
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Image from 'next/image';
 
-export function Pagina03() {
+export const Pagina03 = forwardRef<HTMLElement, unknown>((_, ref) => {
     return (
-        <section className="flex md:min-h-[100vh] items-center justify-center w-full p-5 md:py-10 bg-gradient-to-b from-white to-blue-400">
+        <section 
+            ref={ref}  // Aquí se usa el ref directamente
+            className="flex md:min-h-[100vh] items-center justify-center w-full p-5 md:py-10 bg-gradient-to-b from-white to-blue-400"
+        >
             <div className="flex items-stretch justify-center md:w-3/4 ">
                 {/* Contenedor del Formulario */}
                 <div className="w-full md:w-1/2 bg-white/30  p-8 opacity-99 border-4 border-black rounded-3xl">
@@ -52,5 +55,8 @@ export function Pagina03() {
                 </div>
             </div>
         </section>
-    )
-}
+    );
+});
+
+// Hacemos que forwardRef acepte un ref de tipo HTMLElement
+Pagina03.displayName = 'Pagina03';
