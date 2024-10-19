@@ -25,7 +25,7 @@ export function Homepage() {
         <Link className="flex items-center justify-center" href="/">
           <Image
             alt="Hero"
-            className="h-32 w-32 rounded-full object-cover"
+            className="h-32 w-32  object-cover"
             height="300"
             width="300"
             src="/img/fondo.png"
@@ -59,11 +59,6 @@ export function Homepage() {
           <Link className="text-lg font-medium hover:text-turquesa transition-colors" href="asesorias">
             Asesorías
           </Link>
-          <div className="flex items-center justify-center gap-4 mt-4 lg:mt-0">
-            <Button className="bg-turquesa text-white hover:bg-teal-600 text-xl rounded-full" size="lg">
-              Registrate
-            </Button>
-          </div>
         </nav>
       </header>
 

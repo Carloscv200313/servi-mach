@@ -3,7 +3,7 @@ import { IconUsers, IconCircleCheck, IconClipboardText } from '@tabler/icons-rea
 
 export default function Pagina02() {
     return (
-        <section className="w-full p-14 bg-white  flex flex-col items-center justify-center">
+        <section className="w-full p-14  flex flex-col items-center justify-center bg-white">
             <h2 className="text-3xl font-bold text-center text-black mb-4">
                 Pasos para el Usuario
             </h2>
