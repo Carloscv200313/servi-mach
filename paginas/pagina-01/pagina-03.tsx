@@ -19,23 +19,23 @@ export const Pagina03 = forwardRef<HTMLElement, unknown>((_, ref) => {
                         <div className=" w-full">
                             <div className="space-y-2">
                                 <Label htmlFor="worker-name">Nombre</Label>
-                                <Input id="worker-name" placeholder="Nombre completo" required />
+                                <Input id="nombre" placeholder="Nombre completo" required />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="worker-dni">DNI</Label>
-                                <Input id="worker-dni" placeholder="72825562" required />
+                                <Input id="dni" placeholder="72825562" required />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="worker-email">Email</Label>
-                                <Input id="worker-email" type="email" placeholder="tu@email.com" required />
+                                <Input id="email" type="email" placeholder="tu@email.com" required />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="worker-phone">Teléfono</Label>
-                                <Input id="worker-phone" type="tel" placeholder="123456789" required />
+                                <Input id="telefono" type="tel" placeholder="123456789" required />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="worker-location">Ubicación</Label>
-                                <Input id="worker-location" placeholder="Ciudad, País" required />
+                                <Input id="direccion" placeholder="Ciudad, País" required />
                             </div>
                         </div>
                         <Button className="w-2/3 bg-black text-white hover:bg-green-700  rounded-3xl" type="submit">
