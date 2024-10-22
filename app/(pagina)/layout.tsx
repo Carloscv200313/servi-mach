@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
-
+import "../globals.css";
+import { Homepage } from "@/components/homepage";
 
 export const metadata: Metadata = {
   title: "Servi-Mach",
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        
+        <Homepage />
         {children}
       </body>
     </html>

@@ -50,7 +50,7 @@ export function Homepage() {
 
         {/* Navegación */}
         <nav className={`hidden lg:flex lg:items-center lg:gap-6 absolute lg:static bg-white lg:bg-transparent top-24 left-0 w-full lg:w-auto z-10`}>
-          <Link className="text-lg font-medium hover:text-turquesa transition-colors" href="/">
+          <Link className="text-lg font-medium hover:text-turquesa transition-colors" href="inicio">
             Usuario
           </Link>
           <Link className="text-lg font-medium hover:text-turquesa transition-colors" href="trabajadores">
