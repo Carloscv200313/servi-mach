@@ -3,7 +3,7 @@ import "../globals.css";
 
 
 export const metadata: Metadata = {
-    title: "Servi-Mach",
+    title: "Login",
     description: "Pagina de servicios y coneccion a usuarios",
 };
 

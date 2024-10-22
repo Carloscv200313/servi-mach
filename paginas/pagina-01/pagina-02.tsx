@@ -10,7 +10,7 @@ export default function Pagina02() {
             <p className="text-center text-gray-600 mb-12">
                 Regístrate y encuentra el empleo ideal para ti
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full">
                 {/* Primer paso */}
                 <div className="flex flex-col items-center text-center">
                     <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-2">
@@ -18,10 +18,7 @@ export default function Pagina02() {
                     </div>
                     <h3 className="text-xl font-semibold text-blue-800 mb-1">Te registras</h3>
                     <p className="text-blue-600">
-                        Regístrate como Usuario{" "}
-                        <Link className="text-green-500 hover:underline" href="/">
-                            aquí
-                        </Link>
+                        Completar el formulario del Usuario
                     </p>
                 </div>
                 {/* Segundo paso */}
@@ -37,8 +34,11 @@ export default function Pagina02() {
                     <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-2">
                         <IconCircleCheck stroke={2} className="h-8 w-8 text-green-500" />
                     </div>
-                    <h3 className="text-xl font-semibold text-blue-800 mb-1">Usuario creado</h3>
-                    <p className="text-blue-600">Podrás disponer de los servicios de nuestra app y web</p>
+                    <h3 className="text-xl font-semibold text-blue-800 mb-1">Iniciar Sesion</h3>
+                    <p className="text-blue-600">Podria iniciar sesion desde {" "}</p>
+                    <Link className="text-green-500 hover:underline" href="/login">
+                            aquí
+                        </Link>
                 </div>
             </div>
         </section>

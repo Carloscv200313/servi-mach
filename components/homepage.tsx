@@ -1,9 +1,10 @@
-'use client'
+'use client';
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from 'next/image';
+import {  usePathname } from "next/navigation"; // Importa useParams
 
 export function Homepage() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,16 +20,18 @@ export function Homepage() {
     setIsOpen(false); // Cierra el menú cuando se cierra el modal
   };
 
+  const params = usePathname() // Obtiene los parámetros de la ruta
+
   return (
     <div className="flex flex-col h-auto bg-white">
       <header className="px-4 lg:px-10 h-24 flex items-center justify-between">
         <Link className="flex items-center justify-center" href="/">
           <Image
             alt="Hero"
-            className="h-32 w-32  object-cover"
+            className="h-32 w-32 object-cover"
             height="300"
             width="300"
-            src="/img/fondo.png"
+            src="/img/logo_SF.png"
           />
         </Link>
 
@@ -50,13 +53,22 @@ export function Homepage() {
 
         {/* Navegación */}
         <nav className={`hidden lg:flex lg:items-center lg:gap-6 absolute lg:static bg-white lg:bg-transparent top-24 left-0 w-full lg:w-auto z-10`}>
-          <Link className="text-lg font-medium hover:text-turquesa transition-colors" href="inicio">
+          <Link
+            className={`text-lg font-medium hover:text-turquesa transition-colors  ${params === "/inicio" ? "text-turquesa border-b-2 border-turquesa" : "border-b-2 border-transparent"}`}
+            href="/inicio" // Asegúrate de que el href sea correcto
+          >
             Usuario
           </Link>
-          <Link className="text-lg font-medium hover:text-turquesa transition-colors" href="trabajadores">
+          <Link 
+            className={`text-lg font-medium hover:text-turquesa transition-colors ${params === "/trabajadores" ? "text-turquesa border-b-2 border-turquesa" : "border-b-2 border-transparent"}`}
+            href="/trabajadores"
+          >
             Trabajadores
           </Link>
-          <Link className="text-lg font-medium hover:text-turquesa transition-colors" href="asesorias">
+          <Link 
+            className={`text-lg font-medium hover:text-turquesa transition-colors ${params === "/asesorias" ? "text-turquesa border-b-2 border-turquesa" : "border-b-2 border-transparent"}`}
+            href="/asesorias"
+          >
             Asesorías
           </Link>
         </nav>
@@ -72,10 +84,10 @@ export function Homepage() {
                 <Link href="/" onClick={closeModal} className="text-lg text-blue-600 hover:text-blue-800">Usuario</Link>
               </li>
               <li className="mb-2">
-                <Link href="trabajadores" onClick={closeModal} className="text-lg text-blue-600 hover:text-blue-800">Trabajadores</Link>
+                <Link href="/trabajadores" onClick={closeModal} className="text-lg text-blue-600 hover:text-blue-800">Trabajadores</Link>
               </li>
               <li className="mb-2">
-                <Link href="asesorias" onClick={closeModal} className="text-lg text-blue-600 hover:text-blue-800">Asesorías</Link>
+                <Link href="/asesorias" onClick={closeModal} className="text-lg text-blue-600 hover:text-blue-800">Asesorías</Link>
               </li>
             </ul>
             <Button className="bg-turquesa text-white mt-4 rounded-full" onClick={closeModal}>
