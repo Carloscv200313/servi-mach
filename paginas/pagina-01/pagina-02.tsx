@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { IconUnlink, IconCircleCheck, IconClipboardText, Icon12Hours } from '@tabler/icons-react';
+import { motion } from 'framer-motion';
 
 export default function Pagina02() {
     const pasos = [
@@ -11,15 +12,28 @@ export default function Pagina02() {
 
     return (
         <section className="w-full p-14 flex flex-col items-center justify-center bg-gradient-to-t from-[#62f1de] to-[#4da0b8]">
-            <h2 className="text-7xl font-bold text-center text-white mb-4">
-                Pasos para el Usuario
-            </h2>
-            <p className="text-center text-2xl text-white mb-12">
-                Regístrate y encuentra el empleo ideal para ti
-            </p>
+            <motion.div
+                initial={{ opacity: 0, y: 100 }} // Estado inicial
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }} // Duración de la animación
+            >
+                <h2 className="text-5xl md:text-7xl font-bold text-center text-white mb-4">
+                    Pasos para el Usuario
+                </h2>
+                <p className="text-center text-lg md:text-2xl text-white mb-12">
+                    Regístrate y encuentra el empleo ideal para ti
+                </p>
+            </motion.div>
+
             <div className="grid grid-cols-1 md:grid-cols-4 gap-10 w-full">
-                {pasos.map(paso => (
-                    <div key={paso.titulo} className="flex flex-col items-center w-full text-center border-4 border-teal-800 rounded-3xl p-9 bg-white/20">
+                {pasos.map((paso, index) => (
+                    <motion.div
+                        key={paso.titulo}
+                        className="flex flex-col items-center w-full text-center border-4 border-teal-800 rounded-3xl p-9 bg-white/20"
+                        initial={{ opacity: 0, y: 100 }} // Estado inicial
+                        whileInView={{ opacity: 1, y: 0 }} // Animación cuando está en vista
+                        transition={{ duration: 0.5, delay: index * 0.2 }} // Retraso basado en el índice
+                    >
                         <div className="w-28 h-28 rounded-full bg-green-100 flex items-center justify-center mb-2">
                             {paso.icono}
                         </div>
@@ -28,7 +42,7 @@ export default function Pagina02() {
                             {paso.desc}
                         </p>
                         {paso.link}
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </section>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Image from 'next/image';
+import { motion } from 'framer-motion'; // Importa motion
 
 export const Pagina03 = forwardRef<HTMLElement, unknown>((_, ref) => {
     const [nombre, setnombre] = useState("")
@@ -33,11 +34,16 @@ export const Pagina03 = forwardRef<HTMLElement, unknown>((_, ref) => {
     return (
         <section
             ref={ref}  // Aquí se usa el ref directamente
-            className="flex md:min-h-[70vh] items-center justify-center w-full p-5 md:py-10 bg-gradient-to-b from-[#62f1de] to-blue-400"
+            className="flex md:min-h-[100vh] items-center justify-center w-full p-5 md:py-10 bg-gradient-to-b from-[#62f1de] to-blue-400"
         >
             <div className="flex items-stretch justify-center md:w-3/4 ">
                 {/* Contenedor del Formulario */}
-                <div className="w-full md:w-1/2 bg-white/30  p-8 border-4 border-black rounded-3xl">
+                <motion.div
+                    initial={{ opacity: 0, x: -100 }} // Estado inicial
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1 }} // Duración de la animación
+                    className="w-full md:w-1/2 bg-white/30  p-8 border-4 border-black rounded-3xl"
+                >
                     <form className="space-y-6 flex flex-col items-center justify-center" onSubmit={async (e) => {
                         e.preventDefault();  // Prevenir recarga de la página
                         await crearUsuario(); // Llamar la función de creación de usuario
@@ -52,22 +58,22 @@ export const Pagina03 = forwardRef<HTMLElement, unknown>((_, ref) => {
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="worker-dni">DNI</Label>
-                                <Input id="dni" placeholder="72825562" required 
+                                <Input id="dni" placeholder="72825562" required
                                     onChange={(e) => setdni(e.target.value)} />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="worker-email">Email</Label>
-                                <Input id="email" type="email" placeholder="tu@email.com" required 
+                                <Input id="email" type="email" placeholder="tu@email.com" required
                                     onChange={(e) => setemail(e.target.value)} />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="worker-phone">Teléfono</Label>
-                                <Input id="telefono" type="tel" placeholder="123456789" required 
+                                <Input id="telefono" type="tel" placeholder="123456789" required
                                     onChange={(e) => settelefono(e.target.value)} />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="worker-location">Ubicación</Label>
-                                <Input id="direccion" placeholder="Ciudad, País" required 
+                                <Input id="direccion" placeholder="Ciudad, País" required
                                     onChange={(e) => setdireccion(e.target.value)} />
                             </div>
                         </div>
@@ -75,9 +81,15 @@ export const Pagina03 = forwardRef<HTMLElement, unknown>((_, ref) => {
                             Registrarse
                         </Button>
                     </form>
-                </div>
+                </motion.div>
                 {/* Contenedor de la Imagen */}
-                <div className="hidden md:flex w-1/3 justify-center">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }} // Estado inicial
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1 }} // Duración de la animación
+                    className="hidden md:flex w-1/3 justify-center"
+                >
+                
                     <Image
                         src="/img/imagen.png"
                         width={500} // Ajusta el ancho según tus necesidades
@@ -85,7 +97,8 @@ export const Pagina03 = forwardRef<HTMLElement, unknown>((_, ref) => {
                         alt="Background"
                         className="object-cover h-full w-full" // Asegúrate de que la imagen llene el contenedor
                     />
-                </div>
+                
+                </motion.div>
             </div>
         </section>
     );
