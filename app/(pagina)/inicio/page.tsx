@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import Pagina01 from "@/paginas/pagina-01/pagina-01";
 import Pagina02 from "@/paginas/pagina-01/pagina-02";
 import { Pagina03 } from "@/paginas/pagina-01/pagina-03";
+import Pagina04 from '@/paginas/pagina-01/pagiona-04';
 
 export default function Home() {
   // Crear referencia para la página 03
@@ -19,8 +20,10 @@ export default function Home() {
     <div className="bg-blue-50">
       {/* Pasamos la función scroll a Pagina01 */}
       <Pagina01 scroll={scrollToPagina03} />
+      <Pagina04/>
       <Pagina02 />
       <Pagina03 ref={pagina03Ref} /> {/* Referencia a Pagina03 */}
+      
     </div>
   );
 }

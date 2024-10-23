@@ -6,7 +6,7 @@ interface Pagina{
 }
 export default function Pagina01({scroll} : Pagina) {
     return (
-        <div className="max-h-[100vh] flex items-center justify-center bg-gradient-to-b from-[#8f67df] to-[#62e9e9] p-8 xl:px-32">
+        <div className="max-h-[100vh] flex items-center justify-center bg-gradient-to-b from-[#56398f] to-[#088585] p-8 xl:px-32">
             <div className="bg-transparent border-8 border-white rounded-3xl shadow-lg p-8 w-full h-full flex flex-col md:flex-row ">
                 {/* Sección de texto */}
                 <div className="w-full md:w-1/2 lg:w-2/3 p-0 md:p-8 flex flex-col items-start justify-between">
@@ -21,7 +21,7 @@ export default function Pagina01({scroll} : Pagina) {
                     <Button 
                     className="bg-white text-[#8c52ff] hover:bg-white/90  font-bold py-4 px-6 rounded-3xl text-xl"
                     onClick={scroll}>
-                        Regístrate
+                        Regístrate Ya!!
                     </Button>
                 </div>
                 {/* Sección de imagen */}

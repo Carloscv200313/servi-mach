@@ -1,46 +1,36 @@
 import Link from "next/link";
-import { IconUsers, IconCircleCheck, IconClipboardText } from '@tabler/icons-react';
+import { IconUnlink, IconCircleCheck, IconClipboardText, Icon12Hours } from '@tabler/icons-react';
 
 export default function Pagina02() {
+    const pasos = [
+        { titulo: "Te registras", desc: "Completar el formulario del Usuario", link: "", icono: <IconClipboardText stroke={2} className="h-14 w-14 text-blue-800" /> },
+        { titulo: "Esperar registro", desc: "Se validará su información", link: "", icono: <Icon12Hours stroke={2} className="h-14 w-14 text-orange-500" /> },
+        { titulo: "Confirmación", desc: "Se le enviará un correo de confirmación", link: "", icono: <IconCircleCheck stroke={2} className="h-14 w-14 text-green-500" /> },
+        { titulo: "Iniciar Sesión", desc: "Podría iniciar sesión desde", link: <Link className="text-red-500 hover:underline" href="/login">aquí</Link>, icono: <IconUnlink stroke={2} className="h-14 w-14 text-red-600" /> },
+    ];
+
     return (
-        <section className="w-full p-14  flex flex-col items-center justify-center bg-white">
-            <h2 className="text-3xl font-bold text-center text-black mb-4">
+        <section className="w-full p-14 flex flex-col items-center justify-center bg-gradient-to-t from-[#62f1de] to-[#4da0b8]">
+            <h2 className="text-7xl font-bold text-center text-white mb-4">
                 Pasos para el Usuario
             </h2>
-            <p className="text-center text-gray-600 mb-12">
+            <p className="text-center text-2xl text-white mb-12">
                 Regístrate y encuentra el empleo ideal para ti
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full">
-                {/* Primer paso */}
-                <div className="flex flex-col items-center text-center">
-                    <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-2">
-                        <IconUsers stroke={2} className="h-8 w-8 text-green-500" />
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 w-full">
+                {pasos.map(paso => (
+                    <div key={paso.titulo} className="flex flex-col items-center w-full text-center border-4 border-teal-800 rounded-3xl p-9 bg-white/20">
+                        <div className="w-28 h-28 rounded-full bg-green-100 flex items-center justify-center mb-2">
+                            {paso.icono}
+                        </div>
+                        <h3 className="text-2xl font-semibold text-blue-800 mb-1">{paso.titulo}</h3>
+                        <p className="text-lg text-blue-600">
+                            {paso.desc}
+                        </p>
+                        {paso.link}
                     </div>
-                    <h3 className="text-xl font-semibold text-blue-800 mb-1">Te registras</h3>
-                    <p className="text-blue-600">
-                        Completar el formulario del Usuario
-                    </p>
-                </div>
-                {/* Segundo paso */}
-                <div className="flex flex-col items-center text-center">
-                    <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-2">
-                        <IconClipboardText stroke={2} className="h-8 w-8 text-blue-500" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-blue-800 mb-1">Confirmación</h3>
-                    <p className="text-blue-600">Se le enviará a su correo la confirmación de su nuevo usuario</p>
-                </div>
-                {/* Tercer paso */}
-                <div className="flex flex-col items-center text-center">
-                    <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-2">
-                        <IconCircleCheck stroke={2} className="h-8 w-8 text-green-500" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-blue-800 mb-1">Iniciar Sesion</h3>
-                    <p className="text-blue-600">Podria iniciar sesion desde {" "}</p>
-                    <Link className="text-green-500 hover:underline" href="/login">
-                            aquí
-                        </Link>
-                </div>
+                ))}
             </div>
         </section>
-    )
+    );
 }

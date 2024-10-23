@@ -33,11 +33,11 @@ export const Pagina03 = forwardRef<HTMLElement, unknown>((_, ref) => {
     return (
         <section
             ref={ref}  // Aquí se usa el ref directamente
-            className="flex md:min-h-[70vh] items-center justify-center w-full p-5 md:py-10 bg-gradient-to-b from-white to-blue-400"
+            className="flex md:min-h-[70vh] items-center justify-center w-full p-5 md:py-10 bg-gradient-to-b from-[#62f1de] to-blue-400"
         >
             <div className="flex items-stretch justify-center md:w-3/4 ">
                 {/* Contenedor del Formulario */}
-                <div className="w-full md:w-1/2 bg-white/30  p-8 opacity-99 border-4 border-black rounded-3xl">
+                <div className="w-full md:w-1/2 bg-white/30  p-8 border-4 border-black rounded-3xl">
                     <form className="space-y-6 flex flex-col items-center justify-center" onSubmit={async (e) => {
                         e.preventDefault();  // Prevenir recarga de la página
                         await crearUsuario(); // Llamar la función de creación de usuario
