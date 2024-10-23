@@ -34,7 +34,7 @@ export const Pagina03 = forwardRef<HTMLElement, unknown>((_, ref) => {
     return (
         <section
             ref={ref}  // Aquí se usa el ref directamente
-            className="flex md:min-h-[100vh] items-center justify-center w-full p-5 md:py-10 bg-gradient-to-b from-[#62f1de] to-blue-400"
+            className="flex md:min-h-[100vh] items-center justify-center w-full p-5 md:py-10  bg-gradient-to-t from-[#a261ce] to-blue-400"
         >
             <div className="flex items-stretch justify-center md:w-3/4 ">
                 {/* Contenedor del Formulario */}

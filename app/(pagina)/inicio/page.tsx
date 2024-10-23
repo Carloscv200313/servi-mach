@@ -23,8 +23,8 @@ export default function Home() {
       <Pagina01 scroll={scrollToPagina03} />
       <Pagina04/>
       <Pagina02 />
-      <Pagina03 ref={pagina03Ref} /> {/* Referencia a Pagina03 */}
       <Paginas05/>
+      <Pagina03 ref={pagina03Ref} /> {/* Referencia a Pagina03 */}
       
     </div>
   );

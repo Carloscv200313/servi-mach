@@ -14,7 +14,7 @@ export default function Pagina01({ scroll }: Pagina) {
                 <div className="w-full md:w-1/2 lg:w-2/3 p-0 md:p-8 flex flex-col items-start justify-between">
                     <motion.div
                         className="flex flex-col items-start justify-center"
-                        initial={{ opacity: 0, x: -200 }} // Estado inicial
+                        initial={{ opacity: 0, x: -100 }} // Estado inicial
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1 }} // Duración de la animación
                     >
@@ -27,7 +27,7 @@ export default function Pagina01({ scroll }: Pagina) {
                     </motion.div>
                     <motion.div
                         className="flex flex-col items-start justify-center"
-                        initial={{ opacity: 0, x: -200 }} // Estado inicial
+                        initial={{ opacity: 0, x: -100 }} // Estado inicial
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1 }} // Duración de la animación
                     >
