@@ -18,7 +18,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-blue-50">
+    <div className="bg-blue-50 ">
       {/* Pasamos la función scroll a Pagina01 */}
       <Pagina01 scroll={scrollToPagina03} />
       <Pagina04/>

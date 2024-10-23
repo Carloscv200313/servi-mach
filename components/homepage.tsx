@@ -23,12 +23,12 @@ export function Homepage() {
   const params = usePathname() // Obtiene los parámetros de la ruta
 
   return (
-    <div className="flex flex-col h-auto bg-neutral-50 w-full ">
-      <header className="px-4 lg:px-10 h-24 flex items-center justify-between ">
+    <div className="flex flex-col h-auto bg-neutral-50 w-full fixed z-50">
+      <header className="px-4 lg:px-10 h-20 flex items-center justify-between ">
         <Link className="flex items-center justify-center" href="/">
           <Image
             alt="Hero"
-            className="h-32 w-32 object-cover"
+            className="h-28 w-28 object-cover"
             height="300"
             width="300"
             src="/img/logo_SF.png"
