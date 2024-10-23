@@ -1,7 +1,10 @@
 import React from 'react'
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
-export const Paginas05 = () => {
+interface Pagina {
+    scroll: () => void;
+}
+export default function Pagina01({ scroll }: Pagina){
     return (
         <div className="min-h-[80vh] flex flex-col items-center justify-center w-full p-10 bg-gradient-to-b from-[#62f1de] to-blue-400 gap-10">
             <motion.div
@@ -25,6 +28,7 @@ export const Paginas05 = () => {
                 initial={{ opacity: 0, scale: 0.5 }} // Estado inicial
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1 }} // Duración de la animación
+                onClick={scroll}
             >
                 Regístrate Ya!!
             </motion.button>

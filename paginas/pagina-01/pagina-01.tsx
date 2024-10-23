@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'; // Importa motion
 interface Pagina {
     scroll: () => void;
 }
-
 export default function Pagina01({ scroll }: Pagina) {
     return (
         <div className="pt-28 max-h-[100vh] flex items-center justify-center bg-gradient-to-b from-[#56398f] to-[#088585] p-8 xl:px-32">
