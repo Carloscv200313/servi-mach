@@ -25,11 +25,11 @@ export default function Pagina02() {
                 </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-20 w-8/12 md:w-11/12">
                 {pasos.map((paso, index) => (
                     <motion.div
                         key={paso.titulo}
-                        className="flex flex-col items-center w-full text-center border-4 border-teal-800 rounded-3xl p-9 bg-white/20"
+                        className="flex flex-col items-center w-full text-center border-4 border-teal-800 rounded-3xl py-9 px-4 bg-white/20"
                         initial={{ opacity: 0, y: 100 }} // Estado inicial
                         whileInView={{ opacity: 1, y: 0 }} // Animación cuando está en vista
                         transition={{ duration: 0.5, delay: index * 0.2 }} // Retraso basado en el índice
@@ -39,9 +39,9 @@ export default function Pagina02() {
                         </div>
                         <h3 className="text-2xl font-semibold text-blue-800 mb-1">{paso.titulo}</h3>
                         <p className="text-lg text-blue-600">
-                            {paso.desc}
+                            {paso.desc} {paso.link}
                         </p>
-                        {paso.link}
+                        
                     </motion.div>
                 ))}
             </div>
