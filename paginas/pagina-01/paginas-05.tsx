@@ -1,34 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion';
 interface Pagina {
     scroll: () => void;
 }
-interface Usuarios {
-    id_usuario: string
-    nombre: string
-    dni: string
-    email:  string
-    telefono:  string
-    direccion:string
-}
-async function Usuario(): Promise<Usuarios[]> {
-    const result = await fetch("http://localhost:3000/api/usuarios");
-    if (!result.ok) {
-        throw new Error('Error al obtener los usuarios');
-    }
-    return result.json();
-}
 export default function Pagina01({ scroll }: Pagina) {
-    const [resultados, setresultados] = useState<Usuarios[]>([])
-    useEffect(() => {
-        Usuario()
-            .then(data => {
-                setresultados(data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }, []);
     return (
         <div className="min-h-[80vh] flex flex-col items-center justify-center w-full p-10 bg-gradient-to-b from-[#62f1de] to-blue-400 gap-10">
             <motion.div
@@ -56,11 +31,6 @@ export default function Pagina01({ scroll }: Pagina) {
             >
                 Regístrate Ya!!
             </motion.button>
-            <div>
-                {resultados.map((resultado) => 
-                    <h1 key={resultado.nombre}>{resultado.nombre} </h1>)
-                }
-            </div>
         </div>
     )
 }
