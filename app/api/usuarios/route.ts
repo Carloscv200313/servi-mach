@@ -30,3 +30,9 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: "Ocurrió un error al crear el usuario" }, { status: 500 });
     }
 }
+
+export  async function GET() {
+    const conex= await dbConnect();
+    const result = await conex?.request().query("SELECT * FROM  usuarios")
+    return NextResponse.json(result?.recordset)
+}
