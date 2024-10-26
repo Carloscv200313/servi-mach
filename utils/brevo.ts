@@ -69,7 +69,7 @@ export async function sendEmail({ nombre, email }: Props) {
 </html>
 
 `;
-    smtpElmail.sender = { name: "Carlos Calderon", email: "2313010492@untels.edu.pe" };
+    smtpElmail.sender = { name: "Servi Mach", email: "2313010492@untels.edu.pe" };
 
     try {
         const result = await apiInstance.sendTransacEmail(smtpElmail);
