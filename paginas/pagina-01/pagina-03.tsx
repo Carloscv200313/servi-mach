@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Image from 'next/image';
 import { motion } from 'framer-motion'; // Importa motion
+import { sendEmail } from '@/utils/brevo';
 
 export const Pagina03 = forwardRef<HTMLElement, unknown>((_, ref) => {
     const [nombre, setnombre] = useState("")
@@ -27,9 +28,13 @@ export const Pagina03 = forwardRef<HTMLElement, unknown>((_, ref) => {
                 direccion
             })
         });
+        const valores = {nombre, email}
+        await sendEmail(valores)
+    
         const data = await resp.json();
         console.log(data); // Aquí podrías manejar la respuesta de la API
     }
+    
 
     return (
         <section
@@ -45,8 +50,10 @@ export const Pagina03 = forwardRef<HTMLElement, unknown>((_, ref) => {
                     className="w-full md:w-1/2 bg-white/30  p-8 border-4 border-black rounded-3xl"
                 >
                     <form className="space-y-6 flex flex-col items-center justify-center" onSubmit={async (e) => {
+                        
                         e.preventDefault();  // Prevenir recarga de la página
                         await crearUsuario(); // Llamar la función de creación de usuario
+
                     }}>
                         <h2 className="text-3xl font-bold text-black mb-6 text-center ">Regístrate como usuario</h2>
                         <div className=" w-full">
