@@ -9,7 +9,7 @@ interface Props {
 }
 export async function sendEmail({ nombre, email }: Props) {
     const smtpElmail = new brevo.SendSmtpEmail();
-    smtpElmail.subject = `Hola, ${nombre}`;
+    smtpElmail.subject = `Bienvenido a Servi-Mach ${nombre}`;
     smtpElmail.to = [{ email: email, name: nombre }];
     smtpElmail.htmlContent =
     `
@@ -72,8 +72,7 @@ export async function sendEmail({ nombre, email }: Props) {
     smtpElmail.sender = { name: "Servi Mach", email: "2313010492@untels.edu.pe" };
 
     try {
-        const result = await apiInstance.sendTransacEmail(smtpElmail);
-        console.log('Email enviado con éxito', result);
+        await apiInstance.sendTransacEmail(smtpElmail);
     } catch (error) {
         console.error('Error al enviar el correo', error);
     }

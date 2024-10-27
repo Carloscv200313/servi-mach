@@ -10,7 +10,7 @@ interface Props {
   codigo: number;
 }
 
-export async function sendEmail({ nombre, email, codigo }: Props) {
+export async function sendConfirmacion({ nombre, email, codigo }: Props) {
   if (!email) {
     console.error("El campo de correo electrónico está vacío.");
     return;
@@ -18,7 +18,7 @@ export async function sendEmail({ nombre, email, codigo }: Props) {
 
   // Crear objeto de email
   const smtpEmail = new brevo.SendSmtpEmail();
-  smtpEmail.subject = `Hola, ${nombre}`;
+  smtpEmail.subject = `Correo de Confirmacion`;
   smtpEmail.to = [{ email: email, name: nombre }]; // Verifica que `email` tenga un valor válido
   smtpEmail.sender = { name: "Servi Mach", email: "2313010492@untels.edu.pe" }; // Correo del remitente
 
@@ -88,8 +88,8 @@ export async function sendEmail({ nombre, email, codigo }: Props) {
   `;
 
   try {
-    const response = await apiInstance.sendTransacEmail(smtpEmail);
-    console.log("Email enviado con éxito:", response);
+      await apiInstance.sendTransacEmail(smtpEmail);
+
   } catch (error) {
     console.error("Error al enviar el correo", error);
   }

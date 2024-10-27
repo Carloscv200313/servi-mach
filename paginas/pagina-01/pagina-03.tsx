@@ -1,75 +1,66 @@
-'use client'
+'use client';
 import { useState } from 'react';
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import Image from 'next/image';
-import { motion } from 'framer-motion'; // Importa motion
-import { sendEmail } from '@/utils/brevo_confirmacion';
-
+import { motion } from 'framer-motion';
+import { sendConfirmacion } from '@/utils/brevo_confirmacion';
+import { sendEmail } from '@/utils/brevo';
+import { CelebrationAnimation } from '@/components/celebration-animation';
 export const Pagina03 = () => {
-    // Estados para los campos del formulario
     const [nombre, setnombre] = useState("");
     const [dni, setdni] = useState("");
     const [email, setemail] = useState("");
     const [telefono, settelefono] = useState("");
     const [direccion, setdireccion] = useState("");
-    const [cod, setcod] = useState(0); // Código numérico de confirmación
-    const [codigos, setcodigos] = useState(""); // Código ingresado por el usuario
-
-    // Estado para controlar el paso actual
+    const [cod, setcod] = useState(0);
+    const [codigos, setcodigos] = useState("");
     const [currentStep, setCurrentStep] = useState(0);
 
-    // Función para manejar la creación de usuario (POST a API)
     const crearUsuario = async () => {
-        const userData = { nombre, dni, email, telefono, direccion }; // Crear objeto con los datos actualizados
+        const userData = { nombre, dni, email, telefono, direccion };
         const resp = await fetch("/api/usuarios", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(userData)  // Enviar los datos completos
+            body: JSON.stringify(userData)
         });
-        const data = await resp.json();
-        console.log(data); // Aquí podrías manejar la respuesta de la API
-    };
-
-    // Función para enviar el correo de confirmación con el código
-    const correoConfirmacion = async () => {
-        const codigo = Math.floor(100000 + Math.random() * 900000); // Generar un código de 6 dígitos
-        console.log(codigo);
-        setcod(codigo); // Guardar el código en el estado
+        const datos = { nombre, email };
+        await sendEmail(datos);
+        await resp.json();
         
-        const valores = { nombre, email, codigo }; // Usar los valores actualizados directamente de los estados
-        await sendEmail(valores); // Enviar el correo
+
     };
 
-    // Función para avanzar al siguiente paso
+    const correoConfirmacion = async () => {
+        const codigo = Math.floor(100000 + Math.random() * 900000);
+        setcod(codigo);
+        const valores = { nombre, email, codigo };
+        await sendConfirmacion(valores);
+    };
+
     const handleNext = () => {
         if (currentStep === 0) {
-            // Verificar si todos los campos están completos
             if (!nombre || !dni || !email || !telefono || !direccion) {
                 alert("Por favor, complete todos los campos antes de continuar.");
                 return;
             }
-
-            // Enviar el correo de confirmación y avanzar al siguiente paso
-            correoConfirmacion();  // Enviar correo con código de confirmación
+            correoConfirmacion();
         }
         setCurrentStep(currentStep + 1);
     };
 
-    // Función para retroceder al paso anterior
     const handleBack = () => {
         if (currentStep > 0) {
             setCurrentStep(currentStep - 1);
         }
     };
 
-    // Función para renderizar el contenido según el paso actual
     const renderStepContent = () => {
         switch (currentStep) {
-            case 0:  // Paso 1: Datos Personales
+            case 0:
                 return (
                     <div className="h-full">
                         <h2 className="text-3xl font-bold text-black mb-6 text-center">Regístrate como usuario</h2>
@@ -95,7 +86,7 @@ export const Pagina03 = () => {
                         </div>
                     </div>
                 );
-            case 1:  // Paso 2: Confirmación
+            case 1:
                 return (
                     <div className="h-full">
                         <h2 className="text-3xl font-bold text-black mb-6 text-center">Confirmación</h2>
@@ -114,13 +105,36 @@ export const Pagina03 = () => {
                         </div>
                     </div>
                 );
-            case 2:  // Paso 3: Subir Foto
+            case 2: // Mensaje de bienvenida
                 return (
-                    <div className="h-full">
-                        <h2 className="text-3xl font-bold text-black mb-6 text-center">Subir Foto de Perfil</h2>
-                        <Label htmlFor="profilePicture">Foto de perfil</Label>
-                        <Input id="profilePicture" type="file" accept="image/*" />
-                        <p>Suba una foto de perfil (opcional).</p>
+                    <div className="h-full flex flex-col justify-center items-center">
+                        <motion.h1
+                            className="text-3xl font-bold text-black mb-6 text-center"
+                            initial={{ opacity: 0, y: -50 }} // Estado inicial
+                            animate={{ opacity: 1, y: 0 }} // Estado final
+                            transition={{ duration: 0.5 }} // Duración de la animación
+                        >
+                            🎉 Bienvenido a Servimach 🎉
+                        </motion.h1>
+                        <motion.p
+                            className="text-lg text-center"
+                            initial={{ opacity: 0, scale: 0.5 }} // Estado inicial
+                            animate={{ opacity: 1, scale: 1 }} // Estado final
+                            transition={{ duration: 0.5 }} // Duración de la animación
+                        >
+                            Nos complace informarte que tu registro ha sido exitoso.
+                            <br />
+                            Puedes iniciar sesión utilizando las credenciales que hemos enviado a tu correo personal.
+                            <br />
+                            ¡Estamos encantados de tenerte con nosotros!
+                            <span role="img" aria-label="confetti" className="text-2xl">
+                                🎊🎊🎊
+                            </span>
+                            <br />
+                        </motion.p>
+
+                        <CelebrationAnimation />
+
                     </div>
                 );
             default:
@@ -131,60 +145,56 @@ export const Pagina03 = () => {
     return (
         <section className="flex h-screen items-center justify-center w-full p-5 md:py-10 bg-gradient-to-t from-[#a261ce] to-blue-400">
             <div className="flex items-stretch justify-center h-screen p-10 md:w-3/4">
-                {/* Contenedor del Formulario */}
                 <motion.div
-                    initial={{ opacity: 0, x: -100 }} // Estado inicial
+                    initial={{ opacity: 0, x: -100 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1 }} // Duración de la animación
+                    transition={{ duration: 1 }}
                     className="w-full md:w-1/2 bg-white/30 p-8 border-4 border-black rounded-3xl flex flex-col justify-between"
                     style={{ minHeight: '450px' }}
                 >
-                    <form className="space-y-6 flex flex-col justify-between flex-grow" onSubmit={async (e) => {
-                        e.preventDefault();  // Prevenir recarga de la página
-                        if (currentStep === 2) {
-                            await crearUsuario();  // Solo al finalizar el tercer paso
-                        }
+                    <form className="space-y-6 flex flex-col justify-between flex-grow overflow-y-auto " onSubmit={async (e) => {
+                        e.preventDefault();
                         if (currentStep === 1) {
-                            // Verificar si el código ingresado coincide con el enviado
                             if (Number(codigos) === cod) {
-                                handleNext();  // Avanzar al siguiente paso    
+                                await crearUsuario();
+                                setCurrentStep(2); // Avanza directamente al paso 2
                             } else {
                                 alert("Código incorrecto");
                             }
-                        }
-                        else{
-                            handleNext();  // Avanzar al siguiente paso    
+                        } else {
+                            handleNext();
                         }
                     }}>
                         <div className="flex-grow">
                             {renderStepContent()}
                         </div>
                         <div className="flex justify-between w-full mt-4">
-                            {currentStep > 0 && (
+                            {currentStep > 0 && currentStep < 2 && (
                                 <Button variant="outline" onClick={handleBack} type="button">
                                     Atrás
                                 </Button>
                             )}
-                            <Button className="bg-black text-white hover:bg-green-700 rounded-3xl" type="submit">
-                                {currentStep === 2 ? 'Finalizar' : 'Siguiente'}
-                            </Button>
+                            {currentStep < 2 && (
+                                <Button className="bg-black text-white hover:bg-green-700 rounded-3xl" type="submit">
+                                    {currentStep === 1 ? 'Finalizar' : 'Siguiente'}
+                                </Button>
+                            )}
                         </div>
                     </form>
                 </motion.div>
 
-                {/* Contenedor de la Imagen */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.5 }} // Estado inicial
+                    initial={{ opacity: 0, scale: 0.5 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1 }} // Duración de la animación
+                    transition={{ duration: 1 }}
                     className="hidden md:flex w-1/3 justify-center"
                 >
                     <Image
                         src="/img/imagen.png"
-                        width={500} // Ajusta el ancho según tus necesidades
-                        height={500} // Ajusta la altura para que coincida con la del formulario
+                        width={500}
+                        height={500}
                         alt="Background"
-                        className="object-cover h-full w-full" // Asegúrate de que la imagen llene el contenedor
+                        className="object-cover h-full w-full"
                     />
                 </motion.div>
             </div>
