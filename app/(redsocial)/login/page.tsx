@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from 'next/link'; // Importar el componente Link de Next.js para las rutas
+
 const Home: React.FC = () => {
     return (
         <>
@@ -57,10 +59,25 @@ const Home: React.FC = () => {
                                 </div>
                                 <div className="mt-12 flex justify-center">
                                     <button className="uppercase block w-2/3 p-2 text-xl rounded-xl border-2 border-turquesa bg-black hover:bg-turquesa focus:outline-none  font-semibold text-white">
-                                        Iniciar Sesion
+                                        Iniciar Sesión
                                     </button>
                                 </div>
                             </form>
+                            <div className="mt-5">
+                                <p className="text-sm mb-4">¿No tienes una cuenta? Regístrate como:</p>
+                                <div className="flex justify-around space-x-4">
+                                    <Link href="/login/usuario" className=" text-sm text-white font-semibold border-b-2 border-transparent hover:border-white ">
+                                        
+                                            Usuario
+                                        
+                                    </Link>
+                                    <Link href="/login/empleado"className="text-sm text-white font-semibold border-b-2 border-transparent hover:border-white">
+                                        
+                                            Empleado
+                                        
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

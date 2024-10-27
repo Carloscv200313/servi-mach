@@ -2,7 +2,7 @@ import Link from "next/link";
 import { IconUnlink, IconCircleCheck, IconClipboardText, Icon12Hours } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 
-export default function Pagina02() {
+export const Pagina02 = () => {
     const pasos = [
         { titulo: "Te registras", desc: "Completar el formulario del Usuario", link: "", icono: <IconClipboardText stroke={2} className="h-14 w-14 text-blue-800" /> },
         { titulo: "Esperar registro", desc: "Se validará su información", link: "", icono: <Icon12Hours stroke={2} className="h-14 w-14 text-orange-500" /> },
@@ -41,7 +41,7 @@ export default function Pagina02() {
                         <p className="text-lg text-blue-600">
                             {paso.desc} {paso.link}
                         </p>
-                        
+
                     </motion.div>
                 ))}
             </div>

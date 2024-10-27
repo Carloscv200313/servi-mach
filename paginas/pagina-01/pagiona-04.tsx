@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { motion } from 'framer-motion'; // Importa motion
 
-export default function Pagina04() {
+export const Pagina04=()=> {
     return (
         <section className="p-10 max-h-[100vh] flex md:flex-row flex-col items-center justify-center bg-gradient-to-t from-[#4da0b8] to-[#088585] xl:px-32 overflow-hidden">
             <div className="w-full md:w-1/2 h-1/2 flex items-center justify-center mb-10">
