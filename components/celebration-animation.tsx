@@ -1,24 +1,20 @@
 'use client';
-
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 
-export function CelebrationAnimation() {
+export function CelebrationAnimation({ startCelebration }: { startCelebration: boolean }) {
   const [showCelebration, setShowCelebration] = useState(false);
 
   useEffect(() => {
-    // Iniciar la celebración automáticamente al cargar el componente
-    setShowCelebration(true);
-  }, []);
+    if (startCelebration) {
+      setShowCelebration(true); // Iniciar la celebración solo cuando se activa desde el padre
 
-  useEffect(() => {
-    if (showCelebration) {
       // Lanzar confeti al iniciar la celebración
       confetti({
-        particleCount: 200, // Mayor cantidad de partículas
-        spread: 300, // Aumentar el área de explosión
-        origin: { y: 0.5, x: 0.3 } // Centrado en la pantalla
+        particleCount: 200,
+        spread: 300,
+        origin: { y: 0.5, x: 0.3 }
       });
 
       // Repetir el efecto de confeti cada segundo durante 5 segundos
@@ -32,7 +28,7 @@ export function CelebrationAnimation() {
 
       return () => clearInterval(interval); // Limpiar el intervalo al desmontar
     }
-  }, [showCelebration]);
+  }, [startCelebration]);
 
   const balloons = [
     { color: '#FF6B6B', delay: 0 },
@@ -42,7 +38,7 @@ export function CelebrationAnimation() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center  bg-gray-100">
+    <div className="flex flex-col items-center justify-center bg-gray-100 z-50">
       <AnimatePresence>
         {showCelebration && (
           <motion.div

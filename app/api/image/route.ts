@@ -5,9 +5,9 @@ interface CloudinaryResponse {
     secure_url: string;
 }
 cloudinary.config({
-    cloud_name: 'dtjsttl1h',
-    api_key: '729338967125255',
-    api_secret: '8HclOPbn3krkvE4SutqXBxhCF7I'
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.APY_KEY,
+    api_secret: process.env.APY_SECRET
 });
 
 export async function POST(req: NextRequest) {
